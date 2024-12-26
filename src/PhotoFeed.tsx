@@ -1,4 +1,4 @@
-import { useContext, useEffect } from "react";
+import { useContext } from "react";
 import { PhotoContext } from "./context/PhotoFeedContext";
 
 interface PhotoFeedProps {
