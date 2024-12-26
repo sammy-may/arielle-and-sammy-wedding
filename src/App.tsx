@@ -48,7 +48,7 @@ function App() {
     const Focus = () => {
         if (active_image >= 0) {
             return (
-                <div className="absolute top-0 flex flex-col items-center bg-gray-900 border border-gray-700 rounded-lg">
+                <div className="fixed z-50 top-0 left-0 flex flex-col items-center place-content-center bg-gray-900 border border-gray-700 rounded-lg w-full">
                     <div className="flex items-center place-content-between w-full">
                         <div className="flex items-center place-content-center text-sm bg-gray-900 text-gray-200 font-semibold rounded-lg px-3 py-1.5">
                             Press{" "}
@@ -95,11 +95,11 @@ function App() {
                             <MdNavigateNext />
                         </div>
                     </div>
-                    <div className=" pb-2">
+                    <div className="flex items-center place-content-center pb-2 w-full">
                         <img
                             src={subset[active_image]}
                             alt=""
-                            className="w-full h-full rounded-lg"
+                            className="rounded-lg h-[90vh]"
                         />
                     </div>
                 </div>
@@ -109,13 +109,19 @@ function App() {
     };
 
     return (
-        <div className="bg-white flex flex-col relative">
+        <div className="bg-white flex flex-col relative w-full items-center space-y-3">
             {Focus()}
-            <h1 className="text-3xl font-semibold italic text-gray-900">
+            <h1 className="text-3xl font-serif font-semibold text-gray-900">
                 Arielle and Sammy's Wedding
             </h1>
-            <div className="border w-full px-2 my-2 border-gray-900"></div>
-            <div className="h-[40vh] border w-full">Video placeholder</div>
+            <div className="flex items-center place-content-center py-5 px-5 bg-gray-900 border-gray-700 rounded-lg">
+                <iframe
+                    title="vimeo-player"
+                    src="https://player.vimeo.com/video/902441058?h=3f5b3622eb"
+                    width="640"
+                    height="360"
+                ></iframe>
+            </div>
             <PhotoMenu
                 buttons={[
                     {

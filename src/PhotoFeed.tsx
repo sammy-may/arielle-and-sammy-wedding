@@ -24,14 +24,14 @@ const PhotoFeed = ({ category }: PhotoFeedProps) => {
                     src={`${photo}`}
                     key={"img" + photo}
                     alt=""
-                    className="rounded-lg hover:border-blue-500 border-2 border-white"
+                    className="rounded-lg hover:border-blue-500 border-2 border-white hover:cursor-pointer"
                 />
             </div>
         );
     });
 
     return (
-        <div className="grid grid-cols-4 gap-1" key={"feed" + category}>
+        <div className="grid grid-cols-4 gap-1 p-2" key={"feed" + category}>
             {FullPhotos}
         </div>
     );

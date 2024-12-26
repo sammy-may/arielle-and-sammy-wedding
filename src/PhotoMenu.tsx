@@ -140,13 +140,13 @@ const PhotoMenu = ({ buttons }: FullMenuProps) => {
     };
 
     return (
-        <div className="flex flex-col items-center px-6 max-w-screen-2xl py-2">
-            <div className="flex items-center space-x-2">
+        <div className="flex flex-col items-center px-6 max-w-screen-2xl border border-gray-900 rounded-xl pb-2">
+            <div className="flex items-center space-x-2 py-2 border-b border-x rounded-b-xl px-2 border-gray-900 bg-gray-100">
                 {buttons.map((butt) => {
                     return <MenuButton icon={butt.icon} text={butt.text} />;
                 })}
             </div>
-            <div className="p-3">
+            <div className="">
                 {contents().map((cont) => {
                     const visible = cont.id === visibleId;
                     if (visible) {
