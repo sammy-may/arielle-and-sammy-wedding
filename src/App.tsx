@@ -48,7 +48,7 @@ function App() {
     const Focus = () => {
         if (active_image >= 0) {
             return (
-                <div className="fixed z-50 top-0 left-0 flex flex-col items-center place-content-center bg-gray-900 border border-gray-700 rounded-lg w-full">
+                <div className="fixed z-50 top-0 left-0 flex flex-col items-center place-content-center bg-gray-900 border border-gray-700 w-full">
                     <div className="flex items-center place-content-between w-full">
                         <div className="flex items-center place-content-center text-sm bg-gray-900 text-gray-200 font-semibold rounded-lg px-3 py-1.5">
                             Press{" "}
@@ -99,7 +99,7 @@ function App() {
                         <img
                             src={subset[active_image]}
                             alt=""
-                            className="rounded-lg h-[90vh]"
+                            className="rounded-lg h-[94vh]"
                         />
                     </div>
                 </div>
@@ -120,6 +120,7 @@ function App() {
                     src="https://player.vimeo.com/video/902441058?h=3f5b3622eb"
                     width="640"
                     height="360"
+                    allowFullScreen={true}
                 ></iframe>
             </div>
             <PhotoMenu
