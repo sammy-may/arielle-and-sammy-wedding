@@ -1,3 +1,13 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.masonry {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* 4 columns */
+    gap: 16px; /* Adjust spacing between items */
+}
+
+.masonry img div {
+    break-inside: avoid; /* Prevent images from breaking between columns */
+}

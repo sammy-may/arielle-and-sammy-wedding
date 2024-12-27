@@ -31,7 +31,10 @@ const PhotoFeed = ({ category }: PhotoFeedProps) => {
     });
 
     return (
-        <div className="grid grid-cols-4 gap-1 p-2" key={"feed" + category}>
+        <div
+            className="grid grid-cols-2 gap-1 p-2 masonry"
+            key={"feed" + category}
+        >
             {FullPhotos}
         </div>
     );

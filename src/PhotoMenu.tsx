@@ -27,6 +27,9 @@ const cat_photos = [
     "images/cats/IMG_0439.jpeg",
     "images/cats/IMG_0443.jpeg",
     "images/cats/IMG_0709.jpeg",
+    "images/cats/IMG_0359.jpeg",
+    "images/cats/IMG_0387.jpeg",
+    "images/cats/IMG_0386.jpeg",
 ];
 
 const getting_ready = ["images/cats/IMG_0443.jpeg"];
@@ -66,7 +69,7 @@ const PhotoMenu = ({ buttons }: FullMenuProps) => {
                 onClick={() => {
                     //updateSubset(map.get(slugify(text)));
                 }}
-                className={`group flex flex-col items-start hover:cursor-pointer py-1 border rounded-lg w-full ${bg_color}`}
+                className={`group flex flex-col items-start hover:cursor-pointer py-1 border rounded-lg mb-1 ${bg_color}`}
             >
                 <div
                     className="flex items-center whitespace-nowrap space-x-2 px-2"
@@ -141,7 +144,7 @@ const PhotoMenu = ({ buttons }: FullMenuProps) => {
 
     return (
         <div className="flex flex-col items-center px-6 max-w-screen-2xl border border-gray-900 rounded-xl pb-2">
-            <div className="flex items-center space-x-2 py-2 border-b border-x rounded-b-xl px-2 border-gray-900 bg-gray-100">
+            <div className="flex items-center flex-wrap space-x-2 pt-2 pb-1 border-b border-x rounded-b-xl px-2 border-gray-900 bg-gray-100">
                 {buttons.map((butt) => {
                     return <MenuButton icon={butt.icon} text={butt.text} />;
                 })}

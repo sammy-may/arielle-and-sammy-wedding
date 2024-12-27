@@ -6,7 +6,7 @@ import { FaMusic } from "react-icons/fa";
 import { FaCat } from "react-icons/fa";
 import { FaPhotoVideo } from "react-icons/fa";
 import PhotoFeed from "./PhotoFeed";
-import { useContext, useEffect } from "react";
+import { useContext, useEffect, useState } from "react";
 
 import { PhotoContext } from "./context/PhotoFeedContext";
 import { MdOutlineCancel } from "react-icons/md";
@@ -44,6 +44,35 @@ function App() {
             window.removeEventListener("keydown", handleKeyDown);
         };
     }, [updateActiveImage]);
+
+    const [windowWidth, setWindowWidth] = useState(1024);
+    const [vidHeightStr, setVidHeightStr] = useState<string>("");
+    const [vidWidthStr, setVidWidthStr] = useState<string>("");
+
+    useEffect(() => {
+        // Function to update the window width
+        const handleResize = () => {
+            if (typeof window !== "undefined") {
+                setWindowWidth(window.innerWidth);
+            }
+        };
+
+        // Add event listener
+        window.addEventListener("resize", handleResize);
+
+        // Clean up the event listener on component unmount
+        return () => {
+            window.removeEventListener("resize", handleResize);
+        };
+    }, []);
+
+    useEffect(() => {
+        const vidWidth = Math.round(
+            windowWidth >= 2000 ? 1200 : (windowWidth / 2000) * 1200
+        );
+        setVidWidthStr(String(vidWidth));
+        setVidHeightStr(String(Math.round(vidWidth / 1.7777)));
+    }, [windowWidth]);
 
     const Focus = () => {
         if (active_image >= 0) {
@@ -118,8 +147,8 @@ function App() {
                 <iframe
                     title="vimeo-player"
                     src="https://player.vimeo.com/video/902441058?h=3f5b3622eb"
-                    width="640"
-                    height="360"
+                    width={vidWidthStr}
+                    height={vidHeightStr}
                     allowFullScreen={true}
                 ></iframe>
             </div>
