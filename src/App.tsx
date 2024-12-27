@@ -45,7 +45,7 @@ function App() {
         };
     }, [updateActiveImage]);
 
-    const [windowWidth, setWindowWidth] = useState(1024);
+    const [windowWidth, setWindowWidth] = useState(window.innerWidth);
     const [vidHeightStr, setVidHeightStr] = useState<string>("");
     const [vidWidthStr, setVidWidthStr] = useState<string>("");
 
