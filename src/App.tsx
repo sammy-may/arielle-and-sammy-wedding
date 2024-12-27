@@ -68,7 +68,7 @@ function App() {
 
     useEffect(() => {
         const vidWidth = Math.round(
-            windowWidth >= 2000 ? 1200 : (windowWidth / 2000) * 1200
+            windowWidth >= 2000 ? 1500 : (windowWidth / 2000) * 1500
         );
         setVidWidthStr(String(vidWidth));
         setVidHeightStr(String(Math.round(vidWidth / 1.7777)));
@@ -77,8 +77,8 @@ function App() {
     const Focus = () => {
         if (active_image >= 0) {
             return (
-                <div className="fixed z-50 top-0 left-0 flex flex-col items-center place-content-center bg-gray-900 border border-gray-700 w-full">
-                    <div className="flex items-center place-content-between w-full">
+                <div className="fixed z-50 top-0 left-0 flex flex-col items-center place-content-start bg-gray-900 border border-gray-700 w-full h-full">
+                    <div className="flex flex-wrap items-center place-content-between w-full">
                         <div className="flex items-center place-content-center text-sm bg-gray-900 text-gray-200 font-semibold rounded-lg px-3 py-1.5">
                             Press{" "}
                             <kbd className="mx-1 px-2 py-1.5 text-xs font-semibold border rounded-lg bg-gray-600 text-gray-100 border-gray-500">
@@ -97,7 +97,7 @@ function App() {
                         </div>
                     </div>
                     <div
-                        className={`absolute top-1 flex items-center text-white text-3xl`}
+                        className={`md:absolute md:top-1 flex items-center text-white text-3xl`}
                     >
                         <div
                             onClick={() => {
@@ -128,7 +128,7 @@ function App() {
                         <img
                             src={subset[active_image]}
                             alt=""
-                            className="rounded-lg h-[94vh]"
+                            className="rounded-lg max-h-[94vh]"
                         />
                     </div>
                 </div>
