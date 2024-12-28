@@ -24,7 +24,7 @@ const PhotoFeed = ({ category }: PhotoFeedProps) => {
                     src={`${photo}`}
                     key={"img" + photo}
                     alt=""
-                    className="rounded-lg hover:border-blue-500 border-2 border-white hover:cursor-pointer"
+                    className="rounded-lg hover:border-blue-500 border-2 border-white hover:cursor-pointer fade-in"
                 />
             </div>
         );
@@ -32,7 +32,7 @@ const PhotoFeed = ({ category }: PhotoFeedProps) => {
 
     return (
         <div
-            className="grid grid-cols-2 gap-1 p-2 masonry"
+            className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-1 p-2 h-[80vh] overflow-y-scroll"
             key={"feed" + category}
         >
             {FullPhotos}

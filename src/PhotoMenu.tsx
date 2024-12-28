@@ -69,7 +69,7 @@ const PhotoMenu = ({ buttons }: FullMenuProps) => {
                 onClick={() => {
                     //updateSubset(map.get(slugify(text)));
                 }}
-                className={`group flex flex-col items-start hover:cursor-pointer py-1 border rounded-lg mb-1 ${bg_color}`}
+                className={`group flex flex-col items-start hover:cursor-pointer py-1 border rounded-lg mb-1 mx-1 ${bg_color}`}
             >
                 <div
                     className="flex items-center whitespace-nowrap space-x-2 px-2"
@@ -84,27 +84,6 @@ const PhotoMenu = ({ buttons }: FullMenuProps) => {
         );
     };
 
-    /*     const MenuCat = ({ title, buttons }: MenuCatProps) => {
-        return (
-            <div className="space-y-1 pb-2">
-                <div className="px-4 text-sm font-semibold text-gray-400">
-                    {title}
-                </div>
-                <div className="flex flex-col items-start w-72">
-                    {buttons.map((butt) => {
-                        return (
-                            <MenuButton
-                                icon={butt.icon}
-                                text={butt.text}
-                                content={butt.content}
-                            />
-                        );
-                    })}
-                </div>
-            </div>
-        );
-    }; */
-
     const [visibleId, setVisibleId] = useState<string | null>("all");
 
     useEffect(() => {
@@ -112,6 +91,7 @@ const PhotoMenu = ({ buttons }: FullMenuProps) => {
             let currentHash = window.location.hash.replace("#", "");
             if (!currentHash) currentHash = "all";
             setVisibleId(currentHash);
+            updateSubset(map.get(currentHash));
         };
 
         // Set initial hash on page load
@@ -124,11 +104,11 @@ const PhotoMenu = ({ buttons }: FullMenuProps) => {
         return () => {
             window.removeEventListener("hashchange", handleHashChange);
         };
-    }, []);
+    }, [updateSubset]);
 
-    useEffect(() => {
+    /*     useEffect(() => {
         updateSubset(map.get(visibleId));
-    }, [visibleId, updateSubset]);
+    }, [visibleId, updateSubset]); */
 
     const contents = () => {
         const conts: { id: string; content: JSX.Element }[] = [];
@@ -144,18 +124,28 @@ const PhotoMenu = ({ buttons }: FullMenuProps) => {
 
     return (
         <div className="flex flex-col items-center px-6 max-w-screen-2xl border border-gray-900 rounded-xl pb-2">
-            <div className="flex items-center flex-wrap space-x-2 pt-2 pb-1 border-b border-x rounded-b-xl px-2 border-gray-900 bg-gray-100">
+            <div className="flex items-center place-content-center flex-wrap pt-2 pb-1 mb-1 border-b border-x rounded-b-xl px-1 border-gray-900 bg-gray-100">
                 {buttons.map((butt) => {
-                    return <MenuButton icon={butt.icon} text={butt.text} />;
+                    return (
+                        <MenuButton
+                            icon={butt.icon}
+                            text={butt.text}
+                            key={butt.text}
+                        />
+                    );
                 })}
             </div>
             <div className="">
                 {contents().map((cont) => {
                     const visible = cont.id === visibleId;
                     if (visible) {
-                        return <div>{cont.content}</div>;
+                        return <div key={cont.id}>{cont.content}</div>;
                     } else {
-                        return <div className="hidden">{cont.content}</div>;
+                        return (
+                            <div key={cont.id} className="hidden">
+                                {cont.content}
+                            </div>
+                        );
                     }
                 })}
             </div>

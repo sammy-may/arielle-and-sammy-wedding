@@ -11,3 +11,16 @@
 .masonry img div {
     break-inside: avoid; /* Prevent images from breaking between columns */
 }
+
+.fade-in {
+    animation: fadeIn 2s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
